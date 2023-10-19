@@ -28,7 +28,6 @@ namespace Scripts.Control
                     _playerAttack.Attack(target);
                 return true;
             }
-
             return false;
         }
 

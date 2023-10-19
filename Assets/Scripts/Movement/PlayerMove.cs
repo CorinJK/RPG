@@ -1,17 +1,19 @@
 using Scripts.Combat;
+using Scripts.Core;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Scripts.Movement
 {
-    public class PlayerMove : MonoBehaviour
+    public class PlayerMove : MonoBehaviour, IAction
     {
-        private const string forwardSpeed = "forwardSpeed";
+        private const string _forwardSpeed = "forwardSpeed";
 
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerAttack _playerAttack;
+        [SerializeField] private ActionScheduler _actionScheduler;
 
         private Vector3 _velocity;
         private Vector3 _localVelocity;
@@ -22,7 +24,7 @@ namespace Scripts.Movement
 
         public void StartMoveAction(Vector3 destination)
         {
-            _playerAttack.Cancel();
+            _actionScheduler.StartAction(this);
             MoveTo(destination);
         }
 
@@ -32,7 +34,7 @@ namespace Scripts.Movement
             _agent.isStopped = false;
         }
 
-        public void Stop() => 
+        public void Cancel() => 
             _agent.isStopped = true;
 
         private void UpdateAnimator()
@@ -40,7 +42,7 @@ namespace Scripts.Movement
             _velocity = _agent.velocity;
             _localVelocity = transform.InverseTransformDirection(_velocity);
             _speed = _localVelocity.z;
-            _animator.SetFloat(forwardSpeed, _speed, 0.1f, Time.deltaTime);
+            _animator.SetFloat(_forwardSpeed, _speed, 0.1f, Time.deltaTime);
         }
     }
 }
