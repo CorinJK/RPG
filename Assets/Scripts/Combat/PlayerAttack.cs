@@ -11,12 +11,18 @@ namespace Scripts.Combat
         [SerializeField] private PlayerMove _playerMove;
         [SerializeField] private ActionScheduler _actionScheduler;
         [SerializeField] private Animator _animator;
+        private Transform _target;
+        private Health _health;
 
         [SerializeField] private float _weaponRange = 2f;
-        private Transform _target;
+        [SerializeField] private float _timeBetweenAttacks = 1f;
+        [SerializeField] private float _damage = 5f;
+        private float _timeSinseLastAttack = 0f;
 
         private void Update()
         {
+            _timeSinseLastAttack += Time.deltaTime;
+
             if (_target == null) return;
 
             if (!GetIsInRange())
@@ -30,7 +36,12 @@ namespace Scripts.Combat
 
         private void AttackBehaviour()
         {
-            _animator.SetTrigger(_attack);
+            if (_timeSinseLastAttack >= _timeBetweenAttacks)
+            {
+                // Animation event
+                _animator.SetTrigger(_attack);
+                _timeSinseLastAttack = 0;
+            }
         }
 
         public void Attack(CombatTarget combatTarget)
@@ -39,7 +50,14 @@ namespace Scripts.Combat
             _target = combatTarget.transform;
         }
 
-        public void Cancel() => 
+        // Animation event
+        private void Hit()
+        {
+            _health = _target.GetComponent<Health>();
+            _health.TakeDamage(_damage);
+        }
+
+        public void Cancel() =>
             _target = null;
 
         private bool GetIsInRange() =>
