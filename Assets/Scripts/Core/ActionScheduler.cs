@@ -18,5 +18,10 @@ namespace Scripts.Core
 
             currentAction = action;
         }
+
+        public void CancelCurrentAcion()
+        {
+            StartAction(null);
+        }
     }
 }

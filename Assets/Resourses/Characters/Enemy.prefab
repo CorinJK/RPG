@@ -12,24 +12,24 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1737810008795353004, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 2449129684910610359, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
+      propertyPath: m_Speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4616066072286521120, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       propertyPath: health
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4616066072286521120, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 891537401875294786}
-    - target: {fileID: 4616066072286521120, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       propertyPath: _healthPoints
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8901085487648288820, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
@@ -86,17 +86,37 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6906799534652512303}
+    - targetCorrespondingSourceObject: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1015487135132916121}
   m_SourcePrefab: {fileID: 100100000, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
---- !u!95 &891537401875294786 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2875027952412062537, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
-  m_PrefabInstance: {fileID: 3150626636493658379}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5782133931633518911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8901085487648288820, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
   m_PrefabInstance: {fileID: 3150626636493658379}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6239263606830556881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9020453911189716954, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
+  m_PrefabInstance: {fileID: 3150626636493658379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014772555916029915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5206da6ffc814dc4a88ac987f008f026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7761612668704161323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4616066072286521120, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
+  m_PrefabInstance: {fileID: 3150626636493658379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014772555916029915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31933c9794fb800409da851d88a05511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9014772555916029915 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
@@ -137,6 +157,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be55e38ff64a4b146b305c054be91340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1015487135132916121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014772555916029915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1bd328dd573ef40987ae8a7abcf041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fighter: {fileID: 6239263606830556881}
+  _health: {fileID: 7761612668704161323}
+  _chaseDistance: 5
 --- !u!1001 &8791157383438325886
 PrefabInstance:
   m_ObjectHideFlags: 0

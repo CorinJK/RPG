@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Scripts.Combat
 {
-    public class PlayerAttack : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction
     {
         private const string _attack = "attack_1";
         private const string _stopAttack = "stopAttack";
 
-        [SerializeField] private PlayerMove _playerMove;
+        [SerializeField] private Mover _mover;
         [SerializeField] private ActionScheduler _actionScheduler;
         [SerializeField] private Animator _animator;
 
@@ -18,7 +18,7 @@ namespace Scripts.Combat
         [SerializeField] private float _weaponRange = 2f;
         [SerializeField] private float _timeBetweenAttacks = 1f;
         [SerializeField] private float _damage = 5f;
-        private float _timeSinseLastAttack = 0f;
+        private float _timeSinseLastAttack = Mathf.Infinity;
 
         private void Update()
         {
@@ -28,10 +28,10 @@ namespace Scripts.Combat
             if (_target.IsDead()) return;
 
             if (!GetIsInRange())
-                _playerMove.MoveTo(_target.transform.position);
+                _mover.MoveTo(_target.transform.position);
             else
             {
-                _playerMove.Cancel();
+                _mover.Cancel();
                 AttackBehaviour();
             }
         }
@@ -48,7 +48,7 @@ namespace Scripts.Combat
             }
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null)
                 return false;
@@ -57,7 +57,7 @@ namespace Scripts.Combat
             return targetToTest != null && !targetToTest.IsDead();
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             _actionScheduler.StartAction(this);
             _target = combatTarget.GetComponent<Health>();

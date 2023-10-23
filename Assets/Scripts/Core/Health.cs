@@ -1,6 +1,7 @@
+using Scripts.Combat;
 using UnityEngine;
 
-namespace Scripts.Combat
+namespace Scripts.Core
 {
     public class Health : MonoBehaviour
     {
@@ -8,7 +9,8 @@ namespace Scripts.Combat
 
         [SerializeField] private float _healthPoints = 100f;
         [SerializeField] private Animator _animator;
-        [SerializeField] private PlayerAttack _playerAttack;
+        [SerializeField] private Fighter _fighter;
+        [SerializeField] private ActionScheduler _actionScheduler;
 
         private bool isDead = false;
 
@@ -34,6 +36,7 @@ namespace Scripts.Combat
 
             isDead = true;
             _animator.SetTrigger(die);
+            _actionScheduler.CancelCurrentAcion();
         }
     }
 }

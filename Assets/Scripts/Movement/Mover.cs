@@ -1,26 +1,29 @@
 using Scripts.Combat;
 using Scripts.Core;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Scripts.Movement
 {
-    public class PlayerMove : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction
     {
         private const string _forwardSpeed = "forwardSpeed";
 
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Animator _animator;
-        [SerializeField] private PlayerAttack _playerAttack;
+        [SerializeField] private Fighter _fighter;
         [SerializeField] private ActionScheduler _actionScheduler;
+        [SerializeField] private Health _health;
 
         private Vector3 _velocity;
         private Vector3 _localVelocity;
         private float _speed;
 
-        private void Update() => 
+        private void Update()
+        {
+            _agent.enabled = !_health.IsDead();
             UpdateAnimator();
+        }
 
         public void StartMoveAction(Vector3 destination)
         {
