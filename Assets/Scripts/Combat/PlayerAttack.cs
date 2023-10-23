@@ -43,7 +43,7 @@ namespace Scripts.Combat
             if (_timeSinseLastAttack >= _timeBetweenAttacks)
             {
                 // Animation event
-                _animator.SetTrigger(_attack);
+                TriggerAttack();
                 _timeSinseLastAttack = 0;
             }
         }
@@ -60,19 +60,32 @@ namespace Scripts.Combat
         public void Attack(CombatTarget combatTarget)
         {
             _actionScheduler.StartAction(this);
-            _target = GetComponent<Health>();
+            _target = combatTarget.GetComponent<Health>();
         }
 
         // Animation event
         private void Hit()
         {
+            if (_target == null) return;
             _target.TakeDamage(_damage);
         }
 
         public void Cancel()
         {
-            _animator.SetTrigger(_stopAttack);
+            StopAttack();
             _target = null;
+        }
+
+        private void TriggerAttack()
+        {
+            _animator.ResetTrigger(_stopAttack);
+            _animator.SetTrigger(_attack);
+        }
+
+        private void StopAttack()
+        {
+            _animator.ResetTrigger(_attack);
+            _animator.SetTrigger(_stopAttack);
         }
 
         private bool GetIsInRange() =>
