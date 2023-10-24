@@ -1,3 +1,4 @@
+using Scripts.Control;
 using Scripts.Core;
 using Scripts.Movement;
 using UnityEngine;
@@ -89,6 +90,6 @@ namespace Scripts.Combat
         }
 
         private bool GetIsInRange() =>
-        Vector3.Distance(transform.position, _target.transform.position) < _weaponRange;
+            Vector3.Distance(transform.position, _target.transform.position) < _weaponRange;
     }
 }

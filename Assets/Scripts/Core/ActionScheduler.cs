@@ -4,19 +4,19 @@ namespace Scripts.Core
 {
     public class ActionScheduler : MonoBehaviour
     {
-        IAction currentAction;
+        private IAction _currentAction;
 
         public void StartAction(IAction action)
         {
-            if (currentAction == action) return;
+            if (_currentAction == action) return;
 
-            if (currentAction != null)
+            if (_currentAction != null)
             {
-                currentAction.Cancel();
-                Debug.Log("Cancelling " + currentAction);
+                _currentAction.Cancel();
+                Debug.Log("Cancelling " + _currentAction);
             }
 
-            currentAction = action;
+            _currentAction = action;
         }
 
         public void CancelCurrentAcion()

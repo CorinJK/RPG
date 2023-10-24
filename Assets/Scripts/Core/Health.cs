@@ -5,7 +5,7 @@ namespace Scripts.Core
 {
     public class Health : MonoBehaviour
     {
-        private const string die = "die";
+        private const string _die = "die";
 
         [SerializeField] private float _healthPoints = 100f;
         [SerializeField] private Animator _animator;
@@ -35,7 +35,7 @@ namespace Scripts.Core
             if (isDead) return;
 
             isDead = true;
-            _animator.SetTrigger(die);
+            _animator.SetTrigger(_die);
             _actionScheduler.CancelCurrentAcion();
         }
     }
