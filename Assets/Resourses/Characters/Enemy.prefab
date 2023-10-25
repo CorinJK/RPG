@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616066072286521120, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       propertyPath: _healthPoints
-      value: 15
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       propertyPath: m_Name
@@ -195,7 +195,11 @@ MonoBehaviour:
   _health: {fileID: 7761612668704161323}
   _mover: {fileID: 3721300150770669223}
   _actionScheduler: {fileID: 1861281049448334077}
+  _patrolPath: {fileID: 0}
   _chaseDistance: 5
+  _suspicionTime: 5
+  _waypointTolerance: 1
+  _waypointDwellTime: 3
 --- !u!1001 &8791157383438325886
 PrefabInstance:
   m_ObjectHideFlags: 0

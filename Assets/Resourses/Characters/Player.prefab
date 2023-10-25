@@ -83,6 +83,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4616066072286521120, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
+      propertyPath: _healthPoints
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6243011471077684944, guid: c12b36ed7e612de4bba3cd87a691039f, type: 3}
       propertyPath: m_Name
       value: Player
