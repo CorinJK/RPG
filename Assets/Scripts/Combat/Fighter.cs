@@ -1,4 +1,3 @@
-using Scripts.Control;
 using Scripts.Core;
 using Scripts.Movement;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace Scripts.Combat
             if (_target.IsDead()) return;
 
             if (!GetIsInRange())
-                _mover.MoveTo(_target.transform.position);
+                _mover.MoveTo(_target.transform.position, 1f);
             else
             {
                 _mover.Cancel();
@@ -75,6 +74,7 @@ namespace Scripts.Combat
         {
             StopAttack();
             _target = null;
+            _mover.Cancel();
         }
 
         private void TriggerAttack()

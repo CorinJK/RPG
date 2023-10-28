@@ -15,6 +15,8 @@ namespace Scripts.Movement
         [SerializeField] private ActionScheduler _actionScheduler;
         [SerializeField] private Health _health;
 
+        [SerializeField] private float _maxSpeed = 6f;
+
         private Vector3 _velocity;
         private Vector3 _localVelocity;
         private float _speed;
@@ -25,15 +27,16 @@ namespace Scripts.Movement
             UpdateAnimator();
         }
 
-        public void StartMoveAction(Vector3 destination)
+        public void StartMoveAction(Vector3 destination, float speedFraction)
         {
             _actionScheduler.StartAction(this);
-            MoveTo(destination);
+            MoveTo(destination, speedFraction);
         }
 
-        public void MoveTo(Vector3 destination)
+        public void MoveTo(Vector3 destination, float speedFraction)
         {
             _agent.destination = destination;
+            _agent.speed = _maxSpeed * Mathf.Clamp01(speedFraction);
             _agent.isStopped = false;
         }
 

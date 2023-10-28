@@ -19,6 +19,7 @@ namespace Scripts.Control
         [SerializeField] private float _suspicionTime = 5f;
         [SerializeField] private float _waypointTolerance = 1f;
         [SerializeField] private float _waypointDwellTime = 3f;
+        [Range(0,1)] [SerializeField] private float _patrolSpeedFraction = 0.2f;
 
         private float _timeSinceLastSawPlayer = Mathf.Infinity;
         private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
@@ -60,7 +61,7 @@ namespace Scripts.Control
         }
 
         private void SuspicionBehaviour() =>
-            _actionScheduler.CancelCurrentAcion();
+            _actionScheduler.CancelCurrentAction();
 
         private void PatrolBehaviour()
         {
@@ -77,7 +78,7 @@ namespace Scripts.Control
             }
 
             if (_timeSinceArrivedAtWaypoint > _waypointDwellTime)
-                _mover.StartMoveAction(nextPosition);
+                _mover.StartMoveAction(nextPosition, _patrolSpeedFraction);
             else
                 SuspicionBehaviour();
         }

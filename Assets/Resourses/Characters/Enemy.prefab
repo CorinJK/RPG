@@ -200,6 +200,7 @@ MonoBehaviour:
   _suspicionTime: 5
   _waypointTolerance: 1
   _waypointDwellTime: 3
+  _patrolSpeedFraction: 0.2
 --- !u!1001 &8791157383438325886
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,15 +11,12 @@ namespace Scripts.Core
             if (_currentAction == action) return;
 
             if (_currentAction != null)
-            {
                 _currentAction.Cancel();
-                Debug.Log("Cancelling " + _currentAction);
-            }
 
             _currentAction = action;
         }
 
-        public void CancelCurrentAcion()
+        public void CancelCurrentAction()
         {
             StartAction(null);
         }

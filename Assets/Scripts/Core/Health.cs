@@ -36,7 +36,7 @@ namespace Scripts.Core
 
             isDead = true;
             _animator.SetTrigger(_die);
-            _actionScheduler.CancelCurrentAcion();
+            _actionScheduler.CancelCurrentAction();
         }
     }
 }
